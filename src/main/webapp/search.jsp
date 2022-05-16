@@ -19,7 +19,7 @@
 			<tr>
 				<form action="search.std">
 					<th colspan="7"><input type="text" name="name" id="name" placeholder="Name to Search">
-					<input type="button" id="button" value="Search">
+					<input type="submit" id="button" value="Search">
 				</form>
 			</tr>
 		<tr>
