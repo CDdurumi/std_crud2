@@ -8,10 +8,7 @@ import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-<<<<<<< HEAD
 
-=======
->>>>>>> fdc94cd25432272729ed356ba0a9cfbe53772b32
 import javax.sql.DataSource;
 
 import dto.StdDTO;
