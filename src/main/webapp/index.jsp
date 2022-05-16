@@ -58,7 +58,9 @@ button{
 				location.href="insert.jsp";
 			})
 
-			$("#selectAll").on("click",function(){location.href="ListServlet";})
+			$("#selectAll").on("click",function(){
+					location.href="studentList.std";
+				})
 			
 			$("#delete").on("click",function(){
 				location.href="delete.jsp";
