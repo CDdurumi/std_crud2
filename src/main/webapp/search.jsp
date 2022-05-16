@@ -18,8 +18,8 @@
 	<table border="1" align="center">
 			<tr>
 				<form action="search.std">
-					<th colspan="8"><input type="text" name="name" id="name" placeholder="Name to Search">
-					<th colspan="8"><input type="button" id="button" value="Search">
+					<th colspan="7"><input type="text" name="name" id="name" placeholder="Name to Search">
+					<input type="button" id="button" value="Search">
 				</form>
 			</tr>
 		<tr>
@@ -32,7 +32,7 @@
 			<th>Sum
 			<th>Avg
 		</tr>
-		<c:foreach var="i" item="${list}">
+		<c:forEach var="i" items="${list }">
 			<td>${i.rank}
 			<td>${i.sid }
 			<td>${i.name }
@@ -41,7 +41,7 @@
 			<td>${i.math }
 			<td>${i.kor + i.eng + i.math }
 			<td><fmt:formatNumber value="${(i.kor+i.eng+i.math)/3.0 }" pattern=".0"/>
-		</c:foreach>
+		</c:forEach>
 		<tr>
 			<td colspan=8><button id="back">back</button>
 		</tr>
