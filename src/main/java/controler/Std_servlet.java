@@ -1,6 +1,7 @@
 package controler;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.StdDAO;
 import dto.StdDTO;
+import dto.StudentDTO;
 
 
 @WebServlet("*.std")
@@ -45,11 +47,11 @@ public class Std_servlet extends HttpServlet {
 			response.sendRedirect("/index.jsp");
 		}else if(uri.equals("/search.std")) {
 			
-			int name = Integer.parseInt(request.getParameter("name"));
-			
-			
-			int result = dao.search(name);
-			response.sendRedirect("/search.jsp");
+			String name = request.getParameter("name");
+			List<StdDTO> list = dao.search(name);
+			request.setAttribute("list", list);
+
+			request.getRequestDispatcher("search.jsp").forward(request, response);
 		}
 		}catch(Exception e) {
 			e.printStackTrace();
