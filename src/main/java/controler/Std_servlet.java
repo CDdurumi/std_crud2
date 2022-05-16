@@ -39,7 +39,7 @@ public class Std_servlet extends HttpServlet {
 			}else if(uri.equals("/studentList.std")) {
 				List<StdDTO> list = dao.selectAll();
 				request.setAttribute("list", list);
-				request.getRequestDispatcher("/list/studentList.jsp").forward(request, response);	
+				request.getRequestDispatcher("/studentList.jsp").forward(request, response); 	
 			}else if(uri.equals("/search.std")) {
 				String name = request.getParameter("name");
 				List<StdDTO> list = dao.search(name);
