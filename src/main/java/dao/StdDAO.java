@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -86,7 +87,7 @@ private static StdDAO instance = null;
 	}
 	
 	public List<StdDTO> selectAll() throws Exception {
-		String sql = "select rank() over(order by kor+eng+math desc) rank, sid,name,kor,eng,math from student";
+		String sql = "select rank() over(order by kor+eng+math desc) rank, sid,name,kor,eng,math ,exam_date from student";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 
 			try (ResultSet rs = pstat.executeQuery();) {
@@ -99,9 +100,9 @@ private static StdDAO instance = null;
 					int kor = rs.getInt("kor");
 					int eng = rs.getInt("eng");
 					int math = rs.getInt("math");
-					
+					Date exam_date = rs.getDate("exam_date");
 
-					StdDTO dto = new StdDTO(rank, sid, name, kor, eng, math, null);
+					StdDTO dto = new StdDTO(rank, sid, name, kor, eng, math, exam_date);
 					list.add(dto);
 				}
 				return list;

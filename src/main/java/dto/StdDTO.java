@@ -16,7 +16,7 @@ public class StdDTO{
 		super();
 	}
 	public StdDTO(int rank, int sid, String name, int kor, int eng, int math, Date exam_date) {
-		
+		this.rank = rank;
 		this.sid = sid;
 		this.name = name;
 		this.kor = kor;
