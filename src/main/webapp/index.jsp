@@ -46,9 +46,6 @@ button{
 			<button id="delete">학생 정보 삭제</button>
 		</div>
 		<div class="row">
-			<button id="modify">학생 정보 수정</button>
-		</div>
-		<div class="row">
 			<button id="search">학생 정보 검색</button>
 		</div>
 	</div>
@@ -66,9 +63,6 @@ button{
 				location.href="delete.jsp";
 			})
 			
-			$("#modify").on("click",function(){
-				location.href="modify_list_Servlet";
-			})
 			
 			$("#search").on("click",function(){
 				location.href="search.jsp";
