@@ -42,8 +42,9 @@ public class Std_servlet extends HttpServlet {
 				request.getRequestDispatcher("/list/studentList.jsp").forward(request, response);	
 			}else if(uri.equals("/search.std")) {
 				String name = request.getParameter("name");
-				int result = dao.search(name);
-				response.sendRedirect("/search.jsp");
+				List<StdDTO> list = dao.search(name);
+				request.setAttribute("list", list);
+				request.getRequestDispatcher("/search.jsp").forward(request, response);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
