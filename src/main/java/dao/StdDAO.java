@@ -23,7 +23,7 @@ private static StdDAO instance = null;
 		return instance;
 	}
 	
-	private Connection getconnection() throws Exception {
+	private Connection getConnection() throws Exception {
 		Context ctx = new InitialContext();
 		DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/orcl");
 		
