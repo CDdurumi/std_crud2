@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import org.apache.tomcat.jdbc.pool.DataSource;
 
 import dto.StdDTO;
+import dto.StudentDTO;
 
 public class StdDAO {
 private static StdDAO instance = null;
@@ -96,6 +97,29 @@ private static StdDAO instance = null;
 					double avg = rs.getDouble("avg");
 
 					StdDTO dto = new StdDTO(sid, name, kor, eng, math, null, sum, avg);
+					list.add(dto);
+				}
+				return list;
+			}
+		}
+	}
+	public List<StdDTO> search(String name) throws Exception{
+		
+		String sql = "select rank() over(order by kor+eng+math desc) rank, sid,name,kor,eng,math from student where name=?";
+		try(Connection con = this.getConnection();
+			PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, name);
+			try(ResultSet rs = pstat.executeQuery()){
+				List<StdDTO> list = new ArrayList<>();
+				while(rs.next()) {
+					StdDTO dto = new StdDTO();
+					dto.setRank(rs.getInt("rank"));
+					dto.setSid(rs.getInt("sid"));
+					dto.setName(rs.getString("name"));
+					dto.setKor(rs.getInt("kor"));
+					dto.setEng(rs.getInt("eng"));
+					dto.setMath(rs.getInt("math"));
+					
 					list.add(dto);
 				}
 				return list;

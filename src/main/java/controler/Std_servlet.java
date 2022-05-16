@@ -43,6 +43,13 @@ public class Std_servlet extends HttpServlet {
 			
 			int result = dao.delete(sid);
 			response.sendRedirect("/index.jsp");
+		}else if(uri.equals("/search.std")) {
+			
+			int name = Integer.parseInt(request.getParameter("name"));
+			
+			
+			int result = dao.search(name);
+			response.sendRedirect("/search.jsp");
 		}
 		}catch(Exception e) {
 			e.printStackTrace();
