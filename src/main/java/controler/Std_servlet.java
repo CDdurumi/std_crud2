@@ -36,6 +36,13 @@ public class Std_servlet extends HttpServlet {
 			int result = dao.insert(new StdDTO(0,0,name,kor,eng,math,null));
 			response.sendRedirect("/index.jsp");
 			
+		}else if(uri.equals("/delete.std")) {
+			
+			int sid = Integer.parseInt(request.getParameter("sid"));
+			
+			
+			int result = dao.delete(sid);
+			response.sendRedirect("/index.jsp");
 		}
 		}catch(Exception e) {
 			e.printStackTrace();
