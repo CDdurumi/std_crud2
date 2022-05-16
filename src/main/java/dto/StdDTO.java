@@ -65,9 +65,7 @@ public class StdDTO{
 	}
 	public void setExam_date(Date exam_date) {
 		this.exam_date = exam_date;
-	}
-	
-	
+	}	
 
 	
 }
