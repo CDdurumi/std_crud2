@@ -80,22 +80,22 @@ private static StdDAO instance = null;
 	}
 	
 	public List<StdDTO> selectAll() throws Exception {
-		String sql = "select sid, name, kor, eng, math, (kor+eng+math) as sum, trunc((kor+eng+math)/3,2) as avg from student order by 6 desc";
+		String sql = "select rank() over(order by kor+eng+math desc) rank, sid,name,kor,eng,math from student";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 
 			try (ResultSet rs = pstat.executeQuery();) {
 				List<StdDTO> list = new ArrayList();
 
 				while (rs.next()) {
+					int rank = rs.getInt("rank");
 					int sid = rs.getInt("sid");
 					String name = rs.getString("name");
 					int kor = rs.getInt("kor");
 					int eng = rs.getInt("eng");
 					int math = rs.getInt("math");
-					int sum = rs.getInt("sum");
-					double avg = rs.getDouble("avg");
+					
 
-					StdDTO dto = new StdDTO(sid, name, kor, eng, math, null, sum, avg);
+					StdDTO dto = new StdDTO(rank, sid, name, kor, eng, math, null);
 					list.add(dto);
 				}
 				return list;
