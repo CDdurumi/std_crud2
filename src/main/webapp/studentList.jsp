@@ -30,7 +30,7 @@
 
 
 		<c:choose>
-			<c:when test="test=${!empty list}">
+			<c:when test="${!empty list}">
 				<c:forEach var="i" items="${list }">
 					<tr align=center>
 						<td>${i.rank}
