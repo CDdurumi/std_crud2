@@ -95,7 +95,7 @@ private static StdDAO instance = null;
 					int sum = rs.getInt("sum");
 					double avg = rs.getDouble("avg");
 
-					StudentDTO dto = new StudentDTO(sid, name, kor, eng, math, null, sum, avg);
+					StdDTO dto = new StdDTO(sid, name, kor, eng, math, null, sum, avg);
 					list.add(dto);
 				}
 				return list;
