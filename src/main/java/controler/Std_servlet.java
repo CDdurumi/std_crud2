@@ -38,9 +38,6 @@ public class Std_servlet extends HttpServlet {
 				response.sendRedirect("/index.jsp");
 			}else if(uri.equals("/studentList.std")) {
 				List<StdDTO> list = dao.selectAll();
-				for(StdDTO dto : list) {
-					System.out.println(dto.getEng());
-				}
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("/studentList.jsp").forward(request, response); 	
 			}else if(uri.equals("/search.std")) {
