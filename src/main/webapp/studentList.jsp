@@ -29,7 +29,6 @@
 		</tr>
 
 
-		<!-- 		All 리스트 UI -->
 		<c:choose>
 			<c:when test="test=${!empty list}">
 				<c:forEach var="i" items="${list }">
@@ -54,7 +53,6 @@
 		</c:choose>
 
 
-		<!-- 		Back버튼 UI -->
 		<tr>
 			<td colspan=9 align=center>
 				<button id="back">Back</button>
