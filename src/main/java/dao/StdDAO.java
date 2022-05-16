@@ -11,7 +11,7 @@ import javax.naming.InitialContext;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 
-import dto.StudentDTO;
+import dto.StdDTO;
 
 public class StdDAO {
 private static StdDAO instance = null;
