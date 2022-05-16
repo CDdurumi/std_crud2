@@ -32,15 +32,18 @@ public class Std_servlet extends HttpServlet {
 
 				int result = dao.insert(new StdDTO(0,0,name,kor,eng,math,null));
 				response.sendRedirect("/index.jsp");
-
 			}else if(uri.equals("/delete.std")) {
 				int sid = Integer.parseInt(request.getParameter("sid"));
 				int result = dao.delete(sid);
 				response.sendRedirect("/index.jsp");
 			}else if(uri.equals("/studentList.std")) {
-				List<stdDTO> list = dao.selectAll();
+				List<StdDTO> list = dao.selectAll();
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("/list/studentList.jsp").forward(request, response);	
+			}else if(uri.equals("/search.std")) {
+				int name = Integer.parseInt(request.getParameter("name"));
+				int result = dao.search(name);
+				response.sendRedirect("/search.jsp");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
