@@ -32,50 +32,22 @@ button{
 </style>
 </head>
 <body>
+	<form action="/delete.std">
 	<div class=container>
 		<div class="row">
-			<h2>학생관리 메뉴</h2>
+			<h2>학생 정보 삭제</h2>
 		</div>
 		<div class="row">
-			<button id="insert">신규 정보 입력</button>
+			<div class="col-12"><input type ="text" placeholder="학번을 입력하세요" name="sid"></div>			
 		</div>
 		<div class="row">
-			<button id="selectAll">학생 정보 출력</button>
+			<div class="col-12"><button>삭제하기</button></div>
 		</div>
 		<div class="row">
-			<button id="delete">학생 정보 삭제</button>
+			<a href="index.jsp"><button type="button">뒤로가기</button></a>
 		</div>
-		<div class="row">
-			<button id="modify">학생 정보 수정</button>
-		</div>
-		<div class="row">
-			<button id="search">학생 정보 검색</button>
-		</div>
+		
 	</div>
-	
-	<script>
-			$("#insert").on("click",function(){
-				location.href="insert.jsp";
-			})
-
-			$("#selectAll").on("click",function(){
-					location.href="studentList.std";
-				})
-			
-			$("#delete").on("click",function(){
-				location.href="delete.jsp";
-			})
-			
-			$("#modify").on("click",function(){
-				location.href="modify_list_Servlet";
-			})
-			
-			$("#search").on("click",function(){
-				location.href="search.jsp";
-			})
-// 			$("#search").on("click",function(){
-// 				location.href="search.jsp?name=";
-// 			})
-		</script>
+	</form>
 </body>
 </html>

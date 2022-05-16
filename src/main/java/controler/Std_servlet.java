@@ -17,10 +17,10 @@ import dto.StdDTO;
 public class Std_servlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.setContentType("text/html;charset=UTF-8");
+		//		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");//한글 안깨지게
 		request.setCharacterEncoding("UTF-8");// post 방식 한글 안깨지게
-		
+
 		String uri = request.getRequestURI();
 		StdDAO dao = StdDAO.getInstance();
 		try {
@@ -33,6 +33,10 @@ public class Std_servlet extends HttpServlet {
 				int result = dao.insert(new StdDTO(0,0,name,kor,eng,math,null));
 				response.sendRedirect("/index.jsp");
 
+			}else if(uri.equals("/delete.std")) {
+				int sid = Integer.parseInt(request.getParameter("sid"));
+				int result = dao.delete(sid);
+				response.sendRedirect("/index.jsp");
 			}else if(uri.equals("/studentList.std")) {
 				List<stdDTO> list = dao.selectAll();
 				request.setAttribute("list", list);
@@ -44,7 +48,6 @@ public class Std_servlet extends HttpServlet {
 		}
 
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
