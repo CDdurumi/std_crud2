@@ -79,12 +79,12 @@ private static StdDAO instance = null;
 		}
 	}
 	
-	public List<StudentDTO> selectAll() throws Exception {
+	public List<StdDTO> selectAll() throws Exception {
 		String sql = "select sid, name, kor, eng, math, (kor+eng+math) as sum, trunc((kor+eng+math)/3,2) as avg from student order by 6 desc";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 
 			try (ResultSet rs = pstat.executeQuery();) {
-				List<StudentDTO> list = new ArrayList();
+				List<StdDTO> list = new ArrayList();
 
 				while (rs.next()) {
 					int sid = rs.getInt("sid");
